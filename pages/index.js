@@ -1,5 +1,11 @@
+import Navbar from "../components/Navbar" ; 
+import Layout from "../hoc/Layout";
+
 const index = () => (
-    <div>Hi there!!</div>
+    <Layout title="Home">
+        <Navbar/>
+        Hi there!!
+    </Layout>    
 )
 
 export default index;
