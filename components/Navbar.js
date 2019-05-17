@@ -4,10 +4,10 @@ export default () => (
     <div>
         <ul>
             <li>
-                <Link><a href="/">Friend App</a></Link>
+                <Link href="/"><a>Friend App</a></Link>
             </li>
             <li>
-                <Link><a href="/about">About</a></Link>
+                <Link href="/about"><a>About</a></Link>
             </li>
         </ul>     
 
@@ -29,7 +29,7 @@ export default () => (
                 text-decoration: none;
             }
             ul li a:hover{
-                color: lightgrey;
+                color: #2FA4E7;
             }
         `}
         </style>

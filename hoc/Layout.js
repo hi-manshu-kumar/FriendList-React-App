@@ -1,13 +1,16 @@
 import Head from 'next/head';
 import Navbar from "../components/Navbar" ; 
+import Router from "next/router";
+import * as  Nprogress from 'nprogress';
+
+Router.onRouteChangeStart = () => Nprogress.start();
+Router.onRouteChangeComplete = () => Nprogress.done();
+Router.onRouteChangeError = () => Nprogress.done();
 
 const Layout = (props) => (
     <div className="root">
         <Head>
             <title>Friend App</title>
-            <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css"/>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet"></link>
         </Head>
 
         <header>
@@ -21,7 +24,7 @@ const Layout = (props) => (
             </div>
         </div>
         
-        <footer>&copy; {new Date().getFullYear()}</footer>    
+        <footer>Made by Himank &copy; {new Date().getFullYear()}</footer>    
         
         <style jsx>{`
             .root{
@@ -65,7 +68,7 @@ const Layout = (props) => (
             footer{
                 display: flex;
                 padding: 1em;
-                color: blue;
+                color: #2FA4E7;
                 flex-shrink: 0;
             }
         `}
