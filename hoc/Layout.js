@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Navbar from "../components/Navbar" ; 
 
 const Layout = (props) => (
     <div className="root">
@@ -6,17 +7,22 @@ const Layout = (props) => (
             <title>Friend App</title>
             <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css"/>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            <link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet"></link>
         </Head>
 
-        <header>Header</header>
+        <header>
+            <Navbar></Navbar>
+        </header>
+        
         <div className="content">
         <div>
-            <h1>{props.title}</h1>
+            {/* <h1>{props.title}</h1> */}
             {props.children}
             </div>
         </div>
         
         <footer>&copy; {new Date().getFullYear()}</footer>    
+        
         <style jsx>{`
             .root{
                 display:flex;
@@ -28,17 +34,10 @@ const Layout = (props) => (
 
             header{
                 width: 100%;
-                display: flex;
-                justify-content:space-around;
                 padding: 1em;
                 font-size: 1.2rem;
-                background: indigo;
-                color: darkgrey;
-            }
-
-            header a {
-                color: darkgrey;
-                text-decoration: none;
+                background: #001529;
+                height: 4.1rem;
             }
 
             .content {
@@ -50,8 +49,12 @@ const Layout = (props) => (
             }
             .content div{
                 background: #fff;
-                border: 1px solid black;
-                height: 200px ;
+                border: 1px solid #e3e3e3;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 326px ;
+                width: 399px;
             }
 
             header a: hover{
@@ -73,6 +76,7 @@ const Layout = (props) => (
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
+                font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
             }
             body{
                 margin: 0;

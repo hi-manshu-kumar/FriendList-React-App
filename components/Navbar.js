@@ -2,40 +2,36 @@ import Link from 'next/link';
 
 export default () => (
     <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark mb-4">
-            <div className="container">
-                <a className="navbar-brand" href="#">Friend App</a>
-                <div className="collapse navbar-collapse">
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                            <Link href="/"><a className="nav-link">Home</a></Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link href="/about"><a className="nav-link">About</a></Link>
-                        </li>
-                    </ul>
-                    </div>
-            </div>
-        </nav>
+        <ul>
+            <li>
+                <Link><a href="/">Friend App</a></Link>
+            </li>
+            <li>
+                <Link><a href="/about">About</a></Link>
+            </li>
+        </ul>     
 
-        {/* <style jsx>{`
-        ul{
-            background: #333;
-            color: #fff;
-            list-style: none;
-            display: flex;
-        }
+        <style jsx>{`
+            ul{
+                color: ghostwhite;
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+            }
 
-        ul li{
-            font-size: 18px;
-            margin-right: 20px;
-        }
+            ul li{
+                font-size: 1.2rem;
+                // margin-right: 20px;
+            }
 
-        ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
+            ul li a {
+                color: ghostwhite;            
+                text-decoration: none;
+            }
+            ul li a:hover{
+                color: lightgrey;
+            }
         `}
-        </style> */}
+        </style>
     </div> 
 )
