@@ -19,7 +19,6 @@ const Layout = (props) => (
         
         <div className="content">
         <div>
-            {/* <h1>{props.title}</h1> */}
             {props.children}
             </div>
         </div>
@@ -57,12 +56,6 @@ const Layout = (props) => (
                 flex-direction: column;
                 align-items: center;
                 min-height: 326px ;
-                width: 399px;
-            }
-
-            header a: hover{
-                font-weight: bold;
-                color: lightgrey;
             }
 
             footer{

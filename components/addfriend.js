@@ -54,10 +54,9 @@ class AddFriend extends Component{
                     .switch input {
                         position: absolute;
                         opacity: 0;
-                      }
+                    }
                       
-                      
-                      .switch {
+                    .switch {
                         display: inline-block;
                         font-size: 20px; /* 1 */
                         height: 1em;
@@ -66,9 +65,9 @@ class AddFriend extends Component{
                         background: #BDB9A6;
                         border-radius: 1em;
                         transform: translateY(7px);
-                      }
+                    }
                       
-                      .switch div {
+                    .switch div {
                         height: 1em;
                         width: 1em;
                         margin-top:-0.5em;
@@ -77,15 +76,19 @@ class AddFriend extends Component{
                         background: #FFF;
                         box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
                         -webkit-transition: all 300ms;
-                           -moz-transition: all 300ms;
-                                transition: all 300ms;
-                      }
+                        -moz-transition: all 300ms;
+                        transition: all 300ms;
+                    }
                       
-                      .switch input:checked + div {
+                    .switch input:checked + div {
                         -webkit-transform: translate3d(100%, 0, 0);
-                           -moz-transform: translate3d(100%, 0, 0);
-                                transform: translate3d(100%, 0, 0);
-                      }
+                        -moz-transform: translate3d(100%, 0, 0);
+                            transform: translate3d(100%, 0, 0);
+                    }
+
+                    input:focus{
+                        outline: none;
+                    }
                       
                 `}
                 </style>

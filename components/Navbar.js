@@ -21,12 +21,16 @@ export default () => (
 
             ul li{
                 font-size: 1.2rem;
-                // margin-right: 20px;
             }
 
             ul li a {
                 color: ghostwhite;            
                 text-decoration: none;
+            }
+            ul li:first-child a {
+                font-size: 1.5em;      
+                position: absolute; 
+                transform: translate(-1.5em, -0.2em);
             }
             ul li a:hover{
                 color: #2FA4E7;

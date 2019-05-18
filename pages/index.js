@@ -96,14 +96,30 @@ class index extends Component{
                     The FriendList
                 </div>
 
-                <AddFriend addPropFriend={this.addFriend}/>         
-                <Friend friends={currentList} toggleFavourite={this.toggleFavourite} deleteFriend={this.deleteFriend}></Friend>
+                <AddFriend addPropFriend={this.addFriend}/>      
+
+                <Friend 
+                    friends={currentList} 
+                    toggleFavourite={this.toggleFavourite} 
+                    deleteFriend={this.deleteFriend}/>
+
                 <span className="pagination">
-                {renderPageNumbers}
+                    {renderPageNumbers}
                 </span>
 
                 <div>
-                <span className="filter" onClick={() => this.handleGenderChange("M")}>Male</span>/ <span className="filter" onClick={() => this.handleGenderChange("F")}>Female</span> / <span className="filter"  onClick={() => this.handleGenderChange("A")}>All</span> 
+                    <span 
+                        className="filter" 
+                        onClick={() => this.handleGenderChange("M")}>Male
+                    </span> / 
+                    <span 
+                        className="filter" 
+                        onClick={() => this.handleGenderChange("F")}>Female
+                    </span> / 
+                    <span 
+                        className="filter" 
+                        onClick={() => this.handleGenderChange("A")}>All
+                    </span> 
                 </div>
                 <style global jsx>{`
                     Friend{
@@ -127,44 +143,28 @@ class index extends Component{
                         display: flex;
                         margin: auto 0;
                     }
+
                     .pageNo{
                         margin: 0 0.3em;
                     }
+
                     form{
                         border-bottom: 1px solid #aaaaaa;
                     }
+
                     input[type=text]{
-                        width: 80%;
+                        width: 78%;
                         border:0px;
                         padding:0.2em;    
                         padding-left: 1em;            
                     }
 
-                    .filter,{
+                    .filter, .pageNo{
                         cursor: pointer;
                     }
                     .filter:hover{
                         color:#2FA4E7;
                     }
-
-                    .friendlist{
-                        border-bottom:2px solid #e3e3e3;
-                        padding: 4% 6%;
-                        width:100%;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
-                    }
-
-                    .friendlist p {
-                        margin:0px;
-                        color: black;
-                    }
-
-                    .friendlist p:first-child{
-                        font-weight: bold;
-                    }
-
                 `}</style>
             </Layout>
         )

@@ -37,6 +37,7 @@ const Friend = ({friends, deleteFriend, toggleFavourite}) => {
             .star{
                 display: none;   
             }
+            
             input[type=checkbox] + label:before {
                 font-family: FontAwesome;
                 content: '\f006';
@@ -54,6 +55,23 @@ const Friend = ({friends, deleteFriend, toggleFavourite}) => {
                 border: 1.5px solid #e3e3e3;
                 border-radius: 10%;
                 margin: 0.2em;
+            }
+            .friendlist{
+                border-bottom:2px solid #e3e3e3;
+                padding: 4% 6%;
+                width:100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .friendlist p {
+                margin:0px;
+                color: black;
+            }
+
+            .friendlist p:first-child{
+                font-weight: bold;
             }
         `}</style>   
         </>
