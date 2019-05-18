@@ -16,7 +16,6 @@ $ npm install
 ```
 
 ## Usage
-Enter name of friend and select gender from the toggle button (M/F) and enter inside input box to add into friend list.
 
 In terminal run 
 ```js
@@ -32,21 +31,8 @@ You will have a server running on localhost:3000 open it in browser.
 
 Go to this [link](https://friendapp.now.sh)
 
-## API
-
-```js
-var friendListReactApp = require('FriendList-React-App')
-```
-
-See [api_formatting.md](api_formatting.md) for tips.
-
-## Install
-
-With [npm](https://npmjs.org/) installed, run
-
-```
-$ npm install FriendList-React-App
-```
+Enter name of friend and select gender from the toggle button (M/F) and 
+then press enter inside input box to add into friend list.
 
 
 ## Technologies Used
