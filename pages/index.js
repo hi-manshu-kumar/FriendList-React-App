@@ -11,8 +11,17 @@ class index extends Component{
                 { id:1, name: "Theodore Roosevelt", sex: "M", favourite: true },
                 { id:2, name: "Abraham Lincoln", sex: "F", favourite: false },
                 { id:3, name: "George Washington", sex: "F", favourite: false }
-            ]
-        }
+            ],
+            currentPage: 1,
+            friendsPerPage: 2
+        };
+        this.handlePagination = this .handlePagination.bind(this);
+    }
+
+    handlePagination(event) {
+        this.setState({
+          currentPage: Number(event.target.id)
+        });
     }
 
     toggleFavourite = (id) => {                 //id is for searching the index of array element that is getting changed
@@ -36,7 +45,7 @@ class index extends Component{
         friend.id = friends.length+1;    //calculate the id 
         friend.name = friendData.friendName;    //add the friendname from arguments
         friend.sex="M";
-        friend.favourite=true;
+        friend.favourite=false;
         friends.push(friend);             //push the new friend to the immutable friendlist 
         
         this.setState({friends});           //update the state to rerender the list
@@ -44,6 +53,30 @@ class index extends Component{
 
 
     render(){
+        const { friends,currentPage, friendsPerPage } = this.state;
+
+        const indexOfLastFriend = currentPage * friendsPerPage;
+        const indexOfFirstFriend = indexOfLastFriend - friendsPerPage;
+        const currentList = friends.slice(indexOfFirstFriend, indexOfLastFriend);
+
+        const pageNumbers = [];
+        for (let i =1; i<=Math.ceil(friends.length / friendsPerPage); i++){
+            pageNumbers.push(i);
+        }
+
+        const renderPageNumbers = pageNumbers.map(number => {
+            return (
+              <li
+                key={number}
+                id={number}
+                onClick={this.handlePagination}
+                className="pageNo"
+              >
+                {number}
+              </li>
+            );
+          });
+
         return (
             <Layout title="Home">
                 <div className="heading">
@@ -51,8 +84,10 @@ class index extends Component{
                 </div>
 
                 <AddFriend addPropFriend={this.addFriend}/>         
-                <Friend friends={this.state.friends} toggleFavourite={this.toggleFavourite} deleteFriend={this.deleteFriend}></Friend>
-
+                <Friend friends={currentList} toggleFavourite={this.toggleFavourite} deleteFriend={this.deleteFriend}></Friend>
+                <span className="pagination">
+                {renderPageNumbers}
+                </span>
                 <style global jsx>{`
                     Friend{
                         width:100%;
@@ -69,7 +104,14 @@ class index extends Component{
                         padding-top : 0.5em;
                         border-bottom:1px solid #aaaaaa;
                     }
-
+                    .pagination{
+                        list-style: none;
+                        color: blue;
+                        display: flex;
+                    }
+                    .pageNo{
+                        margin: 50% 0.3em;
+                    }
                     input[type=text]{
                         width: 100%;
                         border:0px;
