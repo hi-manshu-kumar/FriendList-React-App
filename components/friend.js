@@ -10,14 +10,14 @@ const Friend = ({friends, deleteFriend, toggleFavourite}) => {
                     </span>
                     <span>
                         <input 
-                            class="star"
+                            className="star"
                             id={`box${friend.id}`}
                             type="checkbox"
                             checked={friend.favourite}
-                            onChange={() => toggleFavourite(friend.id-1)}
+                            onChange={() => toggleFavourite(friend.id)}
                         />
-                          <label for={`box${friend.id}`}></label>
-                        <button onClick={() => deleteFriend(friend.id)}><i class="far fa-trash-alt"></i></button>
+                          <label htmlFor={`box${friend.id}`}></label>
+                        <button onClick={() => deleteFriend(friend.id)}><i className="far fa-trash-alt"></i></button>
                     </span>
                 </div>
             )
@@ -44,12 +44,16 @@ const Friend = ({friends, deleteFriend, toggleFavourite}) => {
             input[type=checkbox]:checked + label:before {
                 content: "\f005"
             }
+            label{
+                border:1px solid red;
+            }
 
-            button{
+            label,button{
                 background: none;
-                padding: 0.5em 0.;
-                border: 1px solid #e3e3e3;
+                padding: 0.5em 1em;
+                border: 1.5px solid #e3e3e3;
                 border-radius: 10%;
+                margin: 0.2em;
             }
         `}</style>   
         </>

@@ -8,12 +8,13 @@ class index extends Component{
         super();
         this.state={                //state that will hold the list of friends with its details
             friends: [
-                { id:1, name: "Theodore Roosevelt", sex: "M", favourite: true },
-                { id:2, name: "Abraham Lincoln", sex: "F", favourite: false },
-                { id:3, name: "George Washington", sex: "F", favourite: false }
+                { id:1, name: "Theodore Roosevelt", gender: "M", favourite: true },
+                { id:2, name: "Abraham Lincoln", gender: "F", favourite: false },
+                { id:3, name: "George Washington", gender: "F", favourite: false }
             ],
             currentPage: 1,
-            friendsPerPage: 2
+            friendsPerPage: 2,
+            genderFilter: "A"
         };
         this.handlePagination = this .handlePagination.bind(this);
     }
@@ -25,8 +26,15 @@ class index extends Component{
     }
 
     toggleFavourite = (id) => {                 //id is for searching the index of array element that is getting changed
-        const {friends} = this.state;
-        friends[id].favourite = friends[id].favourite ? false:true;     // tertenary operator to toggle favourite
+        let {friends} = this.state;
+
+        friends = friends.map(friend => {
+            if(friend.id === id ){
+                friend.favourite = friend.favourite? false : true;
+            }
+            return friend;
+        });
+
         this.setState({friends});
     }
 
@@ -37,26 +45,31 @@ class index extends Component{
         this.setState({friends});
     }
 
-    addFriend = (friendData) => {       // function tob add friends which execute from the addfriend child 
+    addFriend = (friendData) => {                   // function tob add friends which execute from the addfriend child 
 
-        let friend = {};                //create a empty object
-        let {friends} = this.state;     //have immutable friendlist
+        let friend    = {};                         //create a empty object
+        let {friends} = this.state;                 //have immutable friendlist
 
-        friend.id = friends.length+1;    //calculate the id 
-        friend.name = friendData.friendName;    //add the friendname from arguments
-        friend.sex="M";
-        friend.favourite=false;
-        friends.push(friend);             //push the new friend to the immutable friendlist 
+        friend.id        = friends.length+1;       //calculate the id 
+        friend.name      = friendData.friendName;  //add the friendname from arguments
+        friend.gender       = friendData.gender;
+        friend.favourite = false;
+        friends.push(friend);                       //push the new friend to the immutable friendlist 
         
-        this.setState({friends});           //update the state to rerender the list
+        this.setState({friends});                    //update the state to rerender the list
+        console.log(this.state.friends);
     }
 
+    handleGenderChange = (gender) => {
+        this.setState({genderFilter: gender});
+    }
 
     render(){
-        const { friends,currentPage, friendsPerPage } = this.state;
-
+        let { friends,currentPage, friendsPerPage, genderFilter } = this.state;
+        
         const indexOfLastFriend = currentPage * friendsPerPage;
         const indexOfFirstFriend = indexOfLastFriend - friendsPerPage;
+        friends = friends.filter(friend => friend.gender!==genderFilter);
         const currentList = friends.slice(indexOfFirstFriend, indexOfLastFriend);
 
         const pageNumbers = [];
@@ -75,7 +88,7 @@ class index extends Component{
                 {number}
               </li>
             );
-          });
+        });
 
         return (
             <Layout title="Home">
@@ -88,6 +101,10 @@ class index extends Component{
                 <span className="pagination">
                 {renderPageNumbers}
                 </span>
+
+                <div>
+                <span className="filter" onClick={() => this.handleGenderChange("M")}>Male</span>/ <span className="filter" onClick={() => this.handleGenderChange("F")}>Female</span> / <span className="filter"  onClick={() => this.handleGenderChange("A")}>All</span> 
+                </div>
                 <style global jsx>{`
                     Friend{
                         width:100%;
@@ -108,16 +125,26 @@ class index extends Component{
                         list-style: none;
                         color: blue;
                         display: flex;
+                        margin: auto 0;
                     }
                     .pageNo{
-                        margin: 50% 0.3em;
+                        margin: 0 0.3em;
+                    }
+                    form{
+                        border-bottom: 1px solid #aaaaaa;
                     }
                     input[type=text]{
-                        width: 100%;
+                        width: 80%;
                         border:0px;
-                        border-bottom: 1px solid #aaaaaa;
                         padding:0.2em;    
                         padding-left: 1em;            
+                    }
+
+                    .filter,{
+                        cursor: pointer;
+                    }
+                    .filter:hover{
+                        color:#2FA4E7;
                     }
 
                     .friendlist{
